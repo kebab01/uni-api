@@ -68,8 +68,8 @@ def login():
         exit()
 
     print(payload)
-    with open('index.html', 'w') as f:
-        f.writelines(str(r.text))
+    # with open('index.html', 'w') as f:
+    #     f.writelines(str(r.text))
 
     logging.info(f"Successfully logged in as {payload['username']}")
     return session
@@ -120,13 +120,14 @@ def getType(title):
     title = title.lower()
 
     if 'lab' in title:
-        return 'lab'
+        return 'Labs/Study'
     elif 'assignment' in title or 'quiz' in title:
-        return 'assignment'
+        return 'Assignments'
 
+    return 'Labs/Study'
     # Special rules specific for subject
-    if 'F2F (Due date)' in title:# Specific rule for CSIT214 group project
-        return 'lab'
+    # if 'F2F (Due date)' in title:# Specific rule for CSIT214 group project
+    #     return 'lab'
 
 
 def get_all():

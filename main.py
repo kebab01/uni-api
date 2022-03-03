@@ -35,4 +35,5 @@ async def getEvents(subject_code:str, Authorization: Optional[str] = Header(None
         raise HTTPException(status_code=403, detail="Not authenticated" )
 
     r = calendarEvents.get_subject(subject_code)
+    print(r)
     return r
