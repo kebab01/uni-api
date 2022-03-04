@@ -67,7 +67,6 @@ def login():
         logging.critical(f"An error occured while trying to log in. Server returned status cod {r.status_code}")
         exit()
 
-    print(payload)
     # with open('index.html', 'w') as f:
     #     f.writelines(str(r.text))
 
@@ -107,7 +106,7 @@ def getEvents(urlCode, session):
             {
                 'title':title,
                 'time':time,
-                'classification': event_type
+                'calendar': event_type
             }
         )
 

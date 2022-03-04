@@ -3,3 +3,5 @@
 .venv
 output.log
 test.py
+__pycache__/
+index.html

@@ -5,9 +5,10 @@ from typing import Optional
 import calendarEvents
 from dotenv import load_dotenv
 import os
+import uvicorn
 load_dotenv()
 
-app = FastAPI()
+app = FastAPI(docs_url=None)
 
 AUTH_TOKEN = os.getenv('AUTH_TOKEN')
 
@@ -35,5 +36,7 @@ async def getEvents(subject_code:str, Authorization: Optional[str] = Header(None
         raise HTTPException(status_code=403, detail="Not authenticated" )
 
     r = calendarEvents.get_subject(subject_code)
-    print(r)
     return r
+
+if __name__ == "__main__":
+    uvicorn.run("main:app", host="0.0.0.0", port=80, log_level="info")
